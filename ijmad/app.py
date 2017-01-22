@@ -6,12 +6,20 @@ from flask import Flask, Response, render_template, request, redirect, jsonify
 
 app = Flask(__name__, static_url_path='/static')
 
+@app.before_request
+def check_secure():
+  proto = request.headers.get('X-Forwarded-Proto', None)
+  if proto == 'http':
+    return redirect(request.url.replace('http://', 'https://'), 301)
+
 
 @app.after_request
-def add_header(response):
+def add_headers(response):
+  response.headers["Strict-Transport-Security"] = "max-age=86400; includeSubDomains"
+  
   if request.path == '/' or request.path.startswith('/static'):
     response.cache_control.max_age = 3600
-    
+  
   return response
 
 
