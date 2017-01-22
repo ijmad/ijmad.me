@@ -1,0 +1,177 @@
+.socialbutton {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 1.8em;
+  height: 1.8em;
+  padding: 0px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  font-size: 1.0em;
+  font-weight: normal;
+  line-height: 1.8em;
+  margin: 0.1em;
+  overflow: hidden;
+  z-index: 99;
+  border: none;
+}
+
+.socialbutton:hover {
+  outline-style: solid;
+  outline-width: 0.4em;
+  z-index: 500;
+}
+
+.socialbutton:before {
+  display: block;
+  width: 1.8em;
+  height: 1.8em;
+  line-height: 1.8em;
+  text-align: center;
+}
+
+.socialbutton:hover:before {
+  margin-top: -0.28em;
+  margin-left: -0.28em;
+  font-size: 1.5em;
+}
+
+@media screen {
+  .sharebutton .alt, .socialbutton .alt {
+    position: relative;
+    top: 1000px;
+    left: 1000px;
+  }
+}
+
+.facebookbutton {
+  background-color: #4060A5;
+  outline-color: #4060A5;
+}
+
+.facebookbutton:before {
+  font-family: "FontAwesome";
+  content: "\f09a";
+}
+
+.twitterbutton {
+  background-color: #00ABE3;
+  outline-color: #00ABE3;
+}
+
+.twitterbutton:before {
+    font-family: "FontAwesome";
+    content: "\f099";
+}
+
+.googleplusbutton {
+  background-color: #e64522;
+  outline-color: #e64522;
+}
+
+.googleplusbutton:before {
+    font-family: "FontAwesome";
+    content: "\f0d5";
+}
+
+.linkedinbutton{
+  background-color: #0094BC;
+  outline-color: #0094BC;
+}
+
+.linkedinbutton:before {
+  font-family: "FontAwesome";
+  content: "\f0e1";
+}
+
+.redditbutton {
+  background-color: #5f99cf;
+  outline-color: #5f99cf;  
+}
+
+.redditbutton:before {
+  font-family: "FontAwesome";
+  content: "\f1a1";
+}
+
+.spotifybutton {
+  background-color: #81b71a;
+  outline-color: #81b71a;
+}
+
+.spotifybutton:before {
+  font-family: "FontAwesome";
+  content: "\f1bc";
+}
+
+.githubbutton {
+  background-color: #4183c4;
+  outline-color: #4183c4;
+}
+
+.githubbutton:before {
+  font-family: "FontAwesome";
+  content: "\f09b";
+}
+
+.flickrbutton {
+  background-color: #FC329B;
+  outline-color: #FC329B;
+}
+
+.flickrbutton:before {
+  font-family: "FontAwesome";
+  content: "\f16e";
+}
+
+.skypebutton {
+  background-color: #00aff0;
+  outline-color: #00aff0;
+}
+
+.skypebutton:before {
+  font-family: "FontAwesome";
+  content: "\f17e";
+}
+
+.youtubebutton {
+  background-color: #e52d27;
+  outline-color: #e52d27;
+}
+
+.youtubebutton:before {
+  font-family: "FontAwesome";
+  content: "\f167";
+}
+
+.linkbutton {
+  background-color: orange;
+  outline-color: orange;
+}
+
+.linkbutton:before {
+  font-family: "FontAwesome";
+  content: "\f0c1";
+}
+
+.mailbutton {
+  background-color: orange;
+  outline-color: orange;
+}
+
+.mailbutton:before {
+  font-family: "FontAwesome";
+  content: "\f003";
+}
+
+.instagrambutton {
+  background-color: #8a3ab9;
+  outline-color: #8a3ab9;
+}
+
+.instagrambutton:before {
+  font-family: "FontAwesome";
+  content: "\f16d";
+}
+

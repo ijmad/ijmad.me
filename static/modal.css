@@ -1,0 +1,70 @@
+#modal {
+  font-size: 20px;
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  height: 250px;
+  background-color: rgba(255,255,255,0.95);
+  border: solid 0.1em #ccc;
+  
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  
+  z-index: 1000; 
+}
+
+#modal.displayed {
+  display: block;
+}
+
+#modal #cancel {
+  position: absolute;
+  display: block;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  text-decoration: none;
+}
+
+#modal #spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-image: url('hourglass.gif');
+}
+
+#modal #email {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 40px;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  display: block;
+}
+
+div#recaptcha {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+  width: 304px;
+  height: 78px; 
+
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  
+  z-index: 1000;
+}

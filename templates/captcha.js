@@ -1,0 +1,29 @@
+$( document ).ready(
+  function () {
+    $('<link/>', { rel: 'stylesheet', type: 'text/css', href: 'static/modal.css' }).appendTo('head');
+    $('<div/>', { id: 'modal' }).appendTo('body');
+  }
+);
+
+function checkCaptcha() {
+  if ( ! $('#modal').children().length ) {
+    $('<div/>', { id: 'recaptcha' }).appendTo($('#modal'));
+    $('<a/>', { id: 'cancel', href: 'javascript:$(\'#modal\').fadeOut();' }).html('OK, I admit it. BEEP BOOP. &#129302;').appendTo($('#modal'));
+    
+    grecaptcha.render('recaptcha', {
+      'sitekey' : '{{ RECAPTCHA_SITEKEY }}',
+      callback: function (response) {
+        $('#recaptcha').remove();
+        $('<div/>', { id: 'spinner' }).appendTo($('#modal'));
+        $.post('/email', {'g-recaptcha-response' : response}, function(data, textStatus) {
+          var email = data['email'];
+          $('#spinner').remove();
+          $('<a/>', { id: 'email', href: 'mailto:' + email }).html(email).appendTo($('#modal'));
+          $('#cancel').html('Close');
+        }, 'json');
+      }
+    });
+  }
+  
+  $('#modal').fadeIn();
+}
