@@ -1,13 +1,18 @@
 #!/usr/bin/env python
 
 import os, requests
-from flask import Flask, Response, render_template, request, redirect, jsonify
+from flask import Flask, Response, render_template, request, redirect, jsonify, abort
 
 
 app = Flask(__name__, static_url_path='/static')
 
 @app.before_request
 def check_secure():
+  bearer_found = request.headers.get('Authorization', None)
+  bearer_required = os.environ.get('BEARER_AUTH', None)
+  if bearer_required and (('Bearer ' + bearer_required) != bearer_found):
+    abort(403)
+  
   proto = request.headers.get('X-Forwarded-Proto', None)
   if proto == 'http':
     return redirect(request.url.replace('http://', 'https://'), 301)
