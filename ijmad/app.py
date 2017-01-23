@@ -24,6 +24,9 @@ def add_headers(response):
   
   if request.path == '/' or request.path.startswith('/static'):
     response.cache_control.max_age = 3600
+  else:
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
   
   return response
 
