@@ -22,7 +22,7 @@ def check_secure():
 def add_headers(response):
   response.headers["Strict-Transport-Security"] = "max-age=86400; includeSubDomains"
   
-  if request.path == '/' or request.path.startswith('/static'):
+  if request.path == '/' or request.path == '/captcha.js' or request.path.startswith('/static'):
     response.cache_control.max_age = 3600
   else:
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
