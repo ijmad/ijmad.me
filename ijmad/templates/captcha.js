@@ -13,13 +13,14 @@ function checkCaptcha() {
     grecaptcha.render('recaptcha', {
       'sitekey' : '{{ RECAPTCHA_SITEKEY }}',
       callback: function (response) {
-        $('#recaptcha').remove();
+        $('#recaptcha').hide();
         $('<div/>', { id: 'spinner' }).appendTo($('#modal'));
         $.post('/email', {'g-recaptcha-response' : response}, function(data, textStatus) {
           var email = data['email'];
           $('#spinner').remove();
           $('<a/>', { id: 'email', href: 'mailto:' + email }).html(email).appendTo($('#modal'));
           $('#cancel').html('Close');
+          $('#recaptcha').remove();
         }, 'json');
       }
     });
