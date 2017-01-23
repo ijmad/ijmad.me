@@ -8,7 +8,7 @@ $( document ).ready(
 function checkCaptcha() {
   if ( ! $('#modal').children().length ) {
     $('<div/>', { id: 'recaptcha' }).appendTo($('#modal'));
-    $('<a/>', { id: 'cancel', href: 'javascript:$(\'#modal\').fadeOut();' }).html('OK, I admit it. BEEP BOOP. &#129302;').appendTo($('#modal'));
+    $('<a/>', { id: 'cancel', href: 'javascript:hideCaptcha();' }).html('OK, I admit it. BEEP BOOP. &#129302;').appendTo($('#modal'));
     
     grecaptcha.render('recaptcha', {
       'sitekey' : '{{ RECAPTCHA_SITEKEY }}',
@@ -26,4 +26,8 @@ function checkCaptcha() {
   }
   
   $('#modal').fadeIn();
+}
+
+function hideCaptcha() {
+  $('#modal').fadeOut();
 }
