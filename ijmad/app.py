@@ -22,7 +22,7 @@ def check_secure():
 def add_headers(response):
   response.headers["Strict-Transport-Security"] = "max-age=86400; includeSubDomains"
   
-  if request.path == '/' or request.path == '/captcha.js' or request.path.startswith('/static'):
+  if request.path == '/' or request.path.startswith('/script') or request.path.startswith('/static'):
     response.cache_control.max_age = 3600
   else:
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
@@ -36,8 +36,13 @@ def index():
   return app.send_static_file('index.html')
 
 
-@app.route('/captcha.js', methods=['GET'])
-def captcha():
+@app.route('/script/skype.js', methods=['GET'])
+def script_skype():
+  return Response(render_template('skype.js', SKYPE_NAME=os.environ['SKYPE_NAME']), mimetype='text/javascript')
+  
+
+@app.route('/script/captcha.js', methods=['GET'])
+def script_captcha():
   return Response(render_template('captcha.js', RECAPTCHA_SITEKEY=os.environ['RECAPTCHA_SITEKEY']), mimetype='text/javascript')
 
 
