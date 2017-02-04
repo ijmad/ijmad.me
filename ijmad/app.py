@@ -22,11 +22,11 @@ def check_secure():
 def add_headers(response):
   response.headers["Strict-Transport-Security"] = "max-age=86400; includeSubDomains"
   
-  if request.path == '/' or request.path.startswith('/script') or request.path.startswith('/static'):
-    response.cache_control.max_age = 3600
-  else:
+  if request.path.startswith('/api/'):
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     response.headers['Pragma'] = 'no-cache'
+  else:
+    response.cache_control.max_age = 3600
   
   return response
 
@@ -34,6 +34,11 @@ def add_headers(response):
 @app.route('/', methods=['GET'])
 def index():
   return app.send_static_file('index.html')
+
+
+@app.route('/robots.txt', methods=['GET'])
+def robots():
+  return app.send_static_file('robots.txt')
 
 
 @app.route('/script/skype.js', methods=['GET'])
@@ -46,7 +51,7 @@ def script_captcha():
   return Response(render_template('captcha.js', RECAPTCHA_SITEKEY=os.environ['RECAPTCHA_SITEKEY']), mimetype='text/javascript')
 
 
-@app.route('/email', methods=['POST'])
+@app.route('/api/email', methods=['POST'])
 def email():
   params = {
     'remoteip': request.remote_addr,

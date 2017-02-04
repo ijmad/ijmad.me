@@ -15,7 +15,7 @@ function checkCaptcha() {
       callback: function (response) {
         $('#recaptcha').hide();
         $('<div/>', { id: 'spinner' }).appendTo($('#modal'));
-        $.post('/email', {'g-recaptcha-response' : response}, function(data, textStatus) {
+        $.post('/api/email', {'g-recaptcha-response' : response}, function(data, textStatus) {
           var email = data['email'];
           $('#spinner').remove();
           $('<a/>', { id: 'email', href: 'mailto:' + email }).html(email).appendTo($('#modal'));
