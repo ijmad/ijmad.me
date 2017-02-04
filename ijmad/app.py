@@ -20,7 +20,7 @@ def check_secure():
 
 @app.after_request
 def add_headers(response):
-  response.headers["Strict-Transport-Security"] = "max-age=86400; includeSubDomains"
+  response.headers["Strict-Transport-Security"] = "max-age=63072000; includeSubDomains; preload"
   
   if request.path.startswith('/api/'):
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
