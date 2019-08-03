@@ -17,9 +17,13 @@ function checkCaptcha() {
         $('<div/>', { id: 'spinner' }).appendTo($('#modal'));
         $.post('/api/email', {'g-recaptcha-response' : response}, function(data, textStatus) {
           var email = data['email'];
+          
           $('#spinner').remove();
+          $('#cancel').remove();
+          
           $('<a/>', { id: 'email', href: 'mailto:' + email }).html(email).appendTo($('#modal'));
-          $('#cancel').html('Close');
+          $('<a/>', { id: 'close', href: 'javascript:hideCaptcha();' }).html('Close').appendTo($('#modal'));
+          
           $('#recaptcha').remove();
         }, 'json');
       }
