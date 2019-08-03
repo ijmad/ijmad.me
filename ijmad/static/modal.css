@@ -20,7 +20,7 @@
   display: block;
 }
 
-#modal #cancel {
+#modal #cancel, #modal #close {
   position: absolute;
   display: block;
   left: 0;
